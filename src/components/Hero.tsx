@@ -5,7 +5,7 @@ import { EVERGREEN_PGN, GAME_MATCHUP, GAME_TITLE } from '../data/evergreenGame';
 import { ChessBoard } from './ChessBoard';
 import { MoveTicker } from './MoveTicker';
 import { PlaybackControls } from './PlaybackControls';
-import XLchess from '../assets/xlchess.png';
+import XLchess from '../assets/XLchess.png';
 import { BackgroundPieces } from './BackgroundPieces';
 
 export function Hero() {
