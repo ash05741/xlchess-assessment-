@@ -7,10 +7,26 @@ interface MoveTickerProps {
 }
 
 export function MoveTicker({ moves, ply }: MoveTickerProps) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const activeRef = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
-    activeRef.current?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+    if (activeRef.current && containerRef.current) {
+      const container = containerRef.current;
+      const activeElement = activeRef.current;
+
+      // Calculate the exact center position for the active move
+      const scrollPosition =
+        activeElement.offsetLeft -
+        (container.clientWidth / 2) +
+        (activeElement.clientWidth / 2);
+
+      // Scroll ONLY the container horizontally, leaving the vertical window alone
+      container.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+      });
+    }
   }, [ply]);
 
   const currentMove = ply > 0 ? moves[ply - 1] : null;
@@ -18,6 +34,7 @@ export function MoveTicker({ moves, ply }: MoveTickerProps) {
   return (
     <div className="w-full">
       <div
+        ref={containerRef} // Attach the new container ref here
         className="scrollbar-none flex gap-x-2 overflow-x-auto whitespace-nowrap font-mono text-[13px] text-parchment-dim/70"
         aria-hidden="true"
       >

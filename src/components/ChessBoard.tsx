@@ -66,9 +66,10 @@ export function ChessBoard({ pieces, label }: ChessBoardProps) {
                 width: '12.5%',
                 height: '12.5%',
                 color: p.color === 'w' ? 'var(--color-parchment)' : 'var(--color-ink)',
+                // Layered text-shadow: a tight dark outline + a soft drop shadow
                 textShadow:
                   p.color === 'w'
-                    ? '0 1px 2px rgba(0,0,0,0.55)'
+                    ? '0 0 3px rgba(0,0,0,0.9), 0 2px 5px rgba(0,0,0,0.6)'
                     : '0 1px 1px rgba(242,234,217,0.35)',
               }}
               animate={{ left: `${left}%`, top: `${top}%` }}
