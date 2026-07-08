@@ -43,7 +43,7 @@ export function Hero() {
 
       <div className="relative mx-auto flex min-h-[calc(100vh-8rem)] max-w-7xl px-6 lg:px-8 flex-col items-center gap-14 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
         {/* Copy */}
-        <div className="flex max-w-xl flex-col items-start text-left pt-20 sm:pt-30 lg:pt-20">
+        <div className="flex max-w-xl flex-col items-start text-left pt-10 sm:pt-30 lg:pt-20">
 
           <motion.img
             src={XLchess}
