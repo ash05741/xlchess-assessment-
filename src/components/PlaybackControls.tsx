@@ -25,12 +25,18 @@ function IconButton({
     <button
       type="button"
       aria-label={label}
-      title={label}
+      // 1. Remove the title={label} attribute entirely
       onClick={onClick}
       disabled={disabled}
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-parchment/15 text-parchment transition-colors hover:border-accent-soft hover:text-accent-soft disabled:opacity-30 disabled:hover:border-parchment/15 disabled:hover:text-parchment"
+      // 2. Add 'group' and 'relative' to the beginning of the button's class list
+      className="group relative flex h-9 w-9 items-center justify-center rounded-full border border-parchment/15 text-parchment transition-colors hover:border-accent-soft hover:text-accent-soft disabled:opacity-30 disabled:hover:border-parchment/15 disabled:hover:text-parchment"
     >
       {children}
+
+      {/* 3. Add the custom CSS tooltip inside the button */}
+      <span className="pointer-events-none absolute top-full left-1/2 mt-2 -translate-x-1/2 whitespace-nowrap rounded bg-ink px-2 py-1 text-xs text-parchment opacity-0 transition-opacity group-hover:opacity-100 z-10">
+        {label}
+      </span>
     </button>
   );
 }
